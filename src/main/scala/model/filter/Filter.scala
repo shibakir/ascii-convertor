@@ -1,4 +1,4 @@
-package model
+package model.filter
 
 import model.image.Image
 
