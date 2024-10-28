@@ -1,11 +1,8 @@
-import controller.ControllerConsole
-import ui.ConsoleManager
+import controller.AppController
 
 object Main extends App {
 
-  val controller = new ControllerConsole()
+  private val app = new AppController(null)
 
-  private val manager = new ConsoleManager(controller, null)
-
-  manager.run()
+  app.run()
 }
