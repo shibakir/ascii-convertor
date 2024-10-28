@@ -10,5 +10,7 @@ class AppController(parser: Parser) {
 
     val params = parser.parse()
     println(params)
+
+
   }
 }

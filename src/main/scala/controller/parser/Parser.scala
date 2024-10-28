@@ -33,5 +33,4 @@ class Parser(args: Array[String]) {
     }
     parsedArguments
   }
-
 }
