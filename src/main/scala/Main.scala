@@ -1,3 +1,10 @@
+import ui.ConsoleManager
+
 object Main extends App {
-  println("hello world!")
+
+  val controller = "Controller"
+
+  private val manager = new ConsoleManager(controller, null)
+
+  manager.run()
 }
