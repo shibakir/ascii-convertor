@@ -1,11 +1,14 @@
 import controller.AppController
 import controller.parser.Parser
 
-object Main extends App {
+object Main {
 
-  private val app = new AppController(
-                                      new Parser(args),
-                                      )
+  def main(args: Array[String]): Unit = {
 
-  app.run()
+    val app = new AppController(
+      new Parser(args),
+    )
+
+    app.run()
+  }
 }
