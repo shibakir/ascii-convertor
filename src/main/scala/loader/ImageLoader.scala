@@ -1,5 +1,7 @@
 package loader
 
-trait ImageLoader[T] extends Loader[T] {
+import model.image.Image
+
+trait ImageLoader[T] extends Loader[Image[T]] {
   
 }
