@@ -10,5 +10,6 @@ class ConsoleController(var args: Array[String]) extends Controller {
 
     println("AppController run()")
     consoleView.showArgs()
+    consoleView.getLoader
   }
 }
