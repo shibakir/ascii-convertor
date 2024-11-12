@@ -7,8 +7,13 @@ class ConsoleView(args: Array[String]) {
   private val parser = new Parser(args)
   private val parsedArgs = parser.parse()
 
+  def run(): Unit = {
+
+    print("run ConsoleView.run()")
+  }
+
   def showArgs(): Unit = {
-    
+
       print(parsedArgs)
   }
 }
