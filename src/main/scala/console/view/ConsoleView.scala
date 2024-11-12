@@ -11,6 +11,10 @@ class ConsoleView(args: Array[String]) {
 
     print("run ConsoleView.run()")
   }
+  
+  def loadObject(): Unit = {
+    
+  }
 
   def showArgs(): Unit = {
 
