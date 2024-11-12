@@ -1,23 +1,18 @@
 package model.image
 
-import model.pixel.Pixel
+import model.pixel.PixelRGB
 
-import java.awt.image.BufferedImage
-import javax.imageio.ImageIO
-import java.io.File
-
-
-class Image2D[T <: Pixel](private val pixels: Array[Array[T]]) extends Image[Pixel] {
+class Image2D[T](private val pixels: Array[Array[T]]) extends Image[T] {
 
   private def getHeight: Int = pixels.length
   private def getWidth: Int = if (pixels.isEmpty) 0 else pixels(0).length
 
-  def getPixel(x: Int, y: Int): T = {
+  override def getPixel(x: Int, y: Int): T = {
     validateCoordinates(x, y)
     pixels(x)(y)
   }
 
-  def setPixel(x: Int, y: Int, pixel: T): Unit = {
+  override def setPixel(x: Int, y: Int, pixel: T): Unit = {
     validateCoordinates(x, y)
     pixels(x)(y) = pixel
   }
