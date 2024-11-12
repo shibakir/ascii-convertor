@@ -1,11 +1,5 @@
 package model.image
 
-import model.dot.Dot
+import model.pixel.Pixel
 
-trait Image[T] {
-  
-  def height: Int
-  def width: Int
-
-  def getElement(x: Int, y: Int): T
-}
+trait Image[T <: Pixel] {}
