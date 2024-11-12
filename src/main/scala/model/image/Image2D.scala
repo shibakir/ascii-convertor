@@ -2,9 +2,7 @@ package model.image
 
 import model.pixel.Pixel
 
-trait Image2D[T <: Pixel] extends Image[T] {
-
-  protected val pixels: Array[Array[T]]
+class Image2D[T <: Pixel](private val pixels: Array[Array[T]]) extends Image {
   
   private def getHeight: Int = pixels.length
   private def getWidth: Int = if (pixels.isEmpty) 0 else pixels(0).length

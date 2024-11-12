@@ -2,7 +2,7 @@ package console.view
 
 import console.parser.Parser
 import console.parser.Argument
-import importer.staticLoader.StaticImageImporter
+import importer.FileSystemImageImporter
 
 class ConsoleView(args: Array[String]) {
 
@@ -15,7 +15,7 @@ class ConsoleView(args: Array[String]) {
 
   def getImporter: Unit = {
 
-    var loader: Option[StaticImageImporter] = Option.empty
+    var loader: Option[FileSystemImageImporter] = Option.empty
 
     parsedArgs.foreach {
       case Argument("image", params) if params.nonEmpty =>
