@@ -1,16 +1,14 @@
 package console.controller
 
-import console.controller.parser.Parser
+import console.view.ConsoleView
 
-class ConsoleController(parser: Parser) extends Controller {
+class ConsoleController(var args: Array[String]) extends Controller {
+
+  private val consoleView = ConsoleView(args)
 
   def run(): Unit = {
-    
+
     println("AppController run()")
-
-    val params = parser.parse()
-    println(params)
-
-
+    consoleView.showArgs()
   }
 }
