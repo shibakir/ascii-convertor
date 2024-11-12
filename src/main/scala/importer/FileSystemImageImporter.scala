@@ -27,7 +27,7 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
         val r = (color >> 16) & 255
         val g = (color >> 8) & 255
         val b = color & 255
-        // image(y)(x) = PixelRGB(r, g, b)
+        
         image.setPixel(y, x, PixelRGB(r, g, b))
       }
     }
