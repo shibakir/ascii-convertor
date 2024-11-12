@@ -2,7 +2,7 @@ package console.view
 
 import console.parser.Parser
 import console.parser.Argument
-import importer.FileSystemImageImporter
+import importer.{FileSystemImageImporter, Image2DImporter, ImageImporter}
 
 class ConsoleView(args: Array[String]) {
 
@@ -15,15 +15,17 @@ class ConsoleView(args: Array[String]) {
 
   def getImporter: Unit = {
 
-    var loader: Option[FileSystemImageImporter] = Option.empty
+    var importer: Option[Image] = Option.empty
 
     parsedArgs.foreach {
       case Argument("image", params) if params.nonEmpty =>
         params.head match {
           case "random" =>
             println("random image")
-          case p if p.endsWith(".jpg") || p.endsWith(".png") || p.endsWith(".jpeg") =>
-            println("img")
+          case p if p.endsWith(".jpg") || p.endsWith(".png") || p.endsWith(".webp") =>
+            importer = Option(new FileSystemImageImporter(p))
+            
+            println("IMAGE!!!")
           case _ =>
             println("error")
         }

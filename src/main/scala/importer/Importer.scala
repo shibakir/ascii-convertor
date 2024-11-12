@@ -1,3 +1,3 @@
 package importer
 
-trait Importer [T]{}
+trait Importer [T] {}

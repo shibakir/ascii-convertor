@@ -2,7 +2,7 @@ package importer
 
 import model.image.Image
 import model.image.Image2D
-import model.pixel.PixelRGB
+import model.pixel.{Pixel, PixelRGB}
 
 import java.awt.image.BufferedImage
 import javax.imageio.ImageIO
@@ -11,7 +11,7 @@ import java.io.File
 
 class FileSystemImageImporter(path: String) extends Image2DImporter {
 
-  override def importImage(): Image2D[PixelRGB] = {
+  override def importImage(): Image[Pixel] = {
 
     val file = new File(path)
     val bufferedImage: BufferedImage = ImageIO.read(file)
@@ -19,7 +19,7 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
     val width = bufferedImage.getWidth
     val height = bufferedImage.getHeight
 
-    val image = Image2D[PixelRGB](Array.ofDim[PixelRGB](height, width))
+    val image: Image[Pixel] = Image2D[Pixel](Array.ofDim[Pixel](height, width))
 
     for (y <- 0 until height) {
       for (x <- 0 until width) {
@@ -31,6 +31,7 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
         image.setPixel(y, x, PixelRGB(r, g, b))
       }
     }
+    image.saveAsPng()
     image
   }
 }

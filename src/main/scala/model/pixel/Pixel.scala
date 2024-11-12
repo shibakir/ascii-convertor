@@ -1,3 +1,5 @@
 package model.pixel
 
-trait Pixel {}
+trait Pixel {
+  def toInt: Int
+}

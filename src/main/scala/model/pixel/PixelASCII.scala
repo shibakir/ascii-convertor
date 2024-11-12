@@ -1,3 +1,6 @@
 package model.pixel
 
-case class PixelASCII(symbol: Char) extends Pixel {}
+case class PixelASCII(symbol: Char) extends Pixel {
+
+  override def toInt: Int = 8
+}
