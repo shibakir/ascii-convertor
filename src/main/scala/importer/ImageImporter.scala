@@ -3,7 +3,7 @@ package importer
 import model.image.Image
 import model.pixel.Pixel
 
-trait ImageImporter[T <: Image] extends Importer[T] {
+trait ImageImporter[T] extends Importer[Image] {
   
-  def importImage(): T
+  def importImage(): Image
 }

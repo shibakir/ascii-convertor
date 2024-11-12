@@ -9,9 +9,9 @@ import javax.imageio.ImageIO
 import java.io.File
 
 
-class FileSystemImageImporter(val path: String) extends ImageImporter[Image2D[PixelRGB]] {
+class FileSystemImageImporter(path: String) extends Image2DImporter {
 
-  override def importImage(): Image = {
+  override def importImage(): Image2D[PixelRGB] = {
 
     val file = new File(path)
     val bufferedImage: BufferedImage = ImageIO.read(file)
@@ -19,7 +19,7 @@ class FileSystemImageImporter(val path: String) extends ImageImporter[Image2D[Pi
     val width = bufferedImage.getWidth
     val height = bufferedImage.getHeight
 
-    var image: Image = Image2D[PixelRGB](Array.ofDim[PixelRGB](height, width))
+    val image = Image2D[PixelRGB](Array.ofDim[PixelRGB](height, width))
 
     for (y <- 0 until height) {
       for (x <- 0 until width) {
@@ -28,7 +28,7 @@ class FileSystemImageImporter(val path: String) extends ImageImporter[Image2D[Pi
         val g = (color >> 8) & 255
         val b = color & 255
         // image(y)(x) = PixelRGB(r, g, b)
-        image = image.setPixel(y, x, Pixel(red, green, blue))
+        image.setPixel(y, x, PixelRGB(r, g, b))
       }
     }
     image

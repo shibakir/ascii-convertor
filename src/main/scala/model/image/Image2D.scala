@@ -16,9 +16,7 @@ class Image2D[T <: Pixel](private val pixels: Array[Array[T]]) extends Image {
     validateCoordinates(x, y)
     pixels(x)(y) = pixel
   }
-
-  def copy(): Image2D[T]
-
+  
   private def validateCoordinates(x: Int, y: Int): Unit = {
     if (x < 0 || x >= getHeight || y < 0 || y >= getWidth) {
       throw new ArrayIndexOutOfBoundsException("Invalid coordinates!")
