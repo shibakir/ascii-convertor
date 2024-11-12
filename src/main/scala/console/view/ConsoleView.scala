@@ -18,16 +18,17 @@ class ConsoleView(args: Array[String]) {
     var importer: Option[Image2DImporter] = Option.empty
 
     parsedArgs.foreach {
+
       case Argument("image", params) if params.nonEmpty =>
         params.head match {
           case "random" =>
-            println("random image")
+            println("GENERATE RANDOM INPUT IMAGE")
           case p if p.endsWith(".jpg") || p.endsWith(".png") || p.endsWith(".webp") =>
             importer = Option(new FileSystemImageImporter(p))
-            
-            println("IMAGE!!!")
+
+            println("READ FROM FS INPUT IMAGE")
           case _ =>
-            println("error")
+            println("ERROR")
         }
       case _ =>
     }
