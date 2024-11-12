@@ -1,4 +1,4 @@
-package controller.parser
+package console.controller.parser
 
 case class Argument(name: String, params: Seq[String]) {}
 

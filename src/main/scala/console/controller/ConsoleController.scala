@@ -1,8 +1,8 @@
-package controller
+package console.controller
 
-import controller.parser.Parser
+import console.controller.parser.Parser
 
-class AppController(parser: Parser) {
+class ConsoleController(parser: Parser) {
 
   def run(): Unit = {
     
