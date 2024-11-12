@@ -2,7 +2,7 @@ package console.controller
 
 import console.controller.parser.Parser
 
-class ConsoleController(parser: Parser) {
+class ConsoleController(parser: Parser) extends Controller {
 
   def run(): Unit = {
     
