@@ -31,7 +31,6 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
         image.setPixel(y, x, PixelRGB(r, g, b))
       }
     }
-    image.saveAsPng()
     image
   }
 }

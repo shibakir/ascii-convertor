@@ -1,8 +1,7 @@
 package filter
 
-import filter.Filter
 import model.image.Image
 
-trait ImageFilter[T <: Image] extends Filter[Image] {
+trait ImageFilter[T] extends Filter[Image[T]] {
 
 }

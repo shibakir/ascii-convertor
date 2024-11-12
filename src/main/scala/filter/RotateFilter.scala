@@ -1,12 +1,12 @@
 package filter
 
 import model.pixel.Pixel
-import model.image.{Image, Image2D}
+import model.image.Image
 
-case class RotateFilter() extends ImageFilter[Image2D[Pixel]] {
+class RotateFilter() extends ImageFilter[Image[Pixel]] {
 
-  override def apply(image: Image): Image = {
-    
+  override def apply(image: Image[Pixel]): Image[Pixel] = {
+
     image
   }
 }

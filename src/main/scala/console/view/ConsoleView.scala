@@ -15,7 +15,7 @@ class ConsoleView(args: Array[String]) {
 
   def getImporter: Unit = {
 
-    var importer: Option[Image] = Option.empty
+    var importer: Option[Image2DImporter] = Option.empty
 
     parsedArgs.foreach {
       case Argument("image", params) if params.nonEmpty =>
