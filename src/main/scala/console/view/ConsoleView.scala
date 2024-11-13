@@ -7,6 +7,7 @@ import converter.greyscale.{GreyscaleConverter, GreyscaleToASCIIConvertor}
 import exporter.file.ascii.ASCIIToFileExport
 import exporter.{ASCIIToImageExporter, ImageExporter}
 import importer.{FileSystemImageImporter, Image2DImporter, ImageImporter}
+import transformation.Transformation
 
 class ConsoleView(args: Array[String]) {
 
@@ -53,26 +54,25 @@ class ConsoleView(args: Array[String]) {
     }
     exporters
   }
-  
-  def getConverter: GreyscaleToASCIIConvertor = {
-    val table: Option[Image2DImporter] = Option.empty
+
+  def getConverter: String = {
+    var table = ""
 
     parsedArgs.foreach {
-      case Argument("image", params) if params.nonEmpty =>
+      case Argument("table", params) if params.nonEmpty =>
         params.head match {
-          case "random" =>
-            println("GENERATE RANDOM INPUT IMAGE")
-          case p if p.endsWith(".jpg") || p.endsWith(".png") || p.endsWith(".webp") =>
-            importer = Option(new FileSystemImageImporter(p))
-            println("READ FROM FS INPUT IMAGE")
+          case "basic" =>
+            table = Transformation.tables("basic")
+            println("BASIC CONVERTER")
+          case "advance" =>
+            table = Transformation.tables("advance")
+            println("ADVANCE CONVERTER")
           case _ =>
             println("ERROR")
         }
       case _ =>
     }
-    importer match
-      case Some(imageImporter) => imageImporter
-      case None => throw new Exception("Error getting importer!")
+    table
   }
 
   def loadObject(): Unit = {
