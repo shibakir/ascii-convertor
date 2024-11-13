@@ -2,6 +2,7 @@ package console.controller
 
 import console.view.ConsoleView
 import converter.rgb.RGBToGreyscaleConverter
+import converter.basic.InternalRGBToGreyscaleConvertor
 
 class ConsoleController(var args: Array[String]) extends Controller {
 
@@ -18,8 +19,10 @@ class ConsoleController(var args: Array[String]) extends Controller {
     val exporter = consoleView.getExporter
     val converter = consoleView.getConverter
 
-    // val basicConverter: RGBToGreyscaleConverter = new
-    // val image
+    val basicConverter: RGBToGreyscaleConverter = new InternalRGBToGreyscaleConvertor
+    val image = basicConverter.convert(importer.importImage())
+    
+    // val output = converter.conve
 
     /*
     * step by step:

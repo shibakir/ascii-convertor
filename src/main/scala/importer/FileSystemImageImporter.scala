@@ -11,7 +11,7 @@ import java.io.File
 
 class FileSystemImageImporter(path: String) extends Image2DImporter {
 
-  override def importImage(): Image[Pixel] = {
+  override def importImage(): Image[PixelRGB] = {
 
     val file = new File(path)
     val bufferedImage: BufferedImage = ImageIO.read(file)
@@ -19,7 +19,7 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
     val width = bufferedImage.getWidth
     val height = bufferedImage.getHeight
 
-    val image: Image[Pixel] = Image2D[Pixel](Array.ofDim[Pixel](height, width))
+    val image: Image[PixelRGB] = Image2D[PixelRGB](Array.ofDim[PixelRGB](height, width))
 
     for (y <- 0 until height) {
       for (x <- 0 until width) {
