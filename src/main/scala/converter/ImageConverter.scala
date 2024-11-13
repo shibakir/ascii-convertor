@@ -1,6 +1,5 @@
 package converter
 
-trait ImageConverter[A, B] {
+import model.image.Image
 
-  def convert(image: A): B
-}
+trait ImageConverter[A, B] extends Converter[Image[A], B] {}

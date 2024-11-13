@@ -1,9 +1,9 @@
 package transformation
 
-import converter.ImageConverter
+import converter.Converter
 import model.image.Image
 
-trait Transformation extends ImageConverter[Image[Int], Image[Char]] {}
+trait Transformation extends Converter[Int, Char] {}
 
 
 object Transformation {
