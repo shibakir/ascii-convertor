@@ -3,11 +3,12 @@ package console.view
 import console.parser.Parser
 import console.parser.Argument
 import converter.ImageConverter
+import converter.basic.InternalGreyscaleToASCIIConverter
 import converter.greyscale.{GreyscaleConverter, GreyscaleToASCIIConvertor}
 import exporter.file.ascii.ASCIIToFileExport
 import exporter.{ASCIIToImageExporter, ImageExporter}
 import importer.{FileSystemImageImporter, Image2DImporter, ImageImporter}
-import transformation.Transformation
+import transformation.{LinearTransformation, Transformation, TransformationTable}
 
 class ConsoleView(args: Array[String]) {
 
@@ -55,24 +56,28 @@ class ConsoleView(args: Array[String]) {
     exporters
   }
 
-  def getConverter: String = {
-    var table = ""
+  def getConverter: GreyscaleToASCIIConvertor = {
+    
+    var table: Option[LinearTransformation] = Option.empty
 
     parsedArgs.foreach {
       case Argument("table", params) if params.nonEmpty =>
         params.head match {
           case "basic" =>
-            table = Transformation.tables("basic")
+            table = Option(TransformationTable.tables("basic"))
             println("BASIC CONVERTER")
           case "advance" =>
-            table = Transformation.tables("advance")
+            table = Option(TransformationTable.tables("advance"))
             println("ADVANCE CONVERTER")
+          case "pro" =>
+            table = Option(TransformationTable.tables("pro"))
+            println("PRO CONVERTER")
           case _ =>
             println("ERROR")
         }
       case _ =>
     }
-    table
+    InternalGreyscaleToASCIIConverter(table.get)
   }
 
   def loadObject(): Unit = {
