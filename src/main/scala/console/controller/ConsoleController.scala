@@ -4,13 +4,19 @@ import console.view.ConsoleView
 
 class ConsoleController(var args: Array[String]) extends Controller {
 
-  private val consoleView = ConsoleView(args)
 
   override def run(): Unit = {
 
     println("AppController run()")
+    val consoleView = ConsoleView(args)
+
+    consoleView.run()
     consoleView.showArgs()
+
     consoleView.getImporter
+    consoleView.getExporter
+
+
 
     /*
     * step by step:
