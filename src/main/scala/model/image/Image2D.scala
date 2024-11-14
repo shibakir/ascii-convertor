@@ -15,6 +15,7 @@ class Image2D[T](private val pixels: Array[Array[T]]) extends Image[T] {
   override def setPixel(x: Int, y: Int, pixel: T): Unit = {
     validateCoordinates(x, y)
     pixels(x)(y) = pixel
+
   }
 
   private def validateCoordinates(x: Int, y: Int): Unit = {

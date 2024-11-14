@@ -40,7 +40,7 @@ class ConsoleView(args: Array[String]) {
       case Some(imageImporter) => imageImporter
       case None => throw new Exception("Error getting importer!")
   }
-
+  /*
   def getExporter: Seq[ASCIIToImageExporter] = {
     //var exporter: Option[ASCIIToImageExporter] = Option.empty
     var exporters = Seq[ASCIIToImageExporter]()
@@ -55,12 +55,31 @@ class ConsoleView(args: Array[String]) {
     }
     exporters
   }
+   */
 
-  def getConverter: GreyscaleToASCIIConvertor = {
+  def getExporter: ASCIIToImageExporter = {
     
+    println("OUTPUT TO FILES")
+    
+    var exporter = new ASCIIToFileExport("pic/file.txt")
+    exporter
+  }
+  
+  def getConverter: GreyscaleToASCIIConvertor = {
+
     var table: Option[LinearTransformation] = Option.empty
 
     parsedArgs.foreach {
+      case Argument("table-basic", params) =>
+        table = Option(TransformationTable.tables("basic"))
+        println("TABLE BASIC")
+      case Argument("table-advance", params) =>
+        table = Option(TransformationTable.tables("advance"))
+        println("TABLE ADVANCE")
+      case Argument("table-pro", params) =>
+        table = Option(TransformationTable.tables("pro"))
+        println("TABLE PRO")
+      /*
       case Argument("table", params) if params.nonEmpty =>
         params.head match {
           case "basic" =>
@@ -75,6 +94,7 @@ class ConsoleView(args: Array[String]) {
           case _ =>
             println("ERROR")
         }
+      */
       case _ =>
     }
     InternalGreyscaleToASCIIConverter(table.get)

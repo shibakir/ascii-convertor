@@ -14,6 +14,8 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
   override def importImage(): Image[PixelRGB] = {
 
     val file = new File(path)
+    
+    // webp not working
     val bufferedImage: BufferedImage = ImageIO.read(file)
 
     val width = bufferedImage.getWidth
@@ -27,7 +29,6 @@ class FileSystemImageImporter(path: String) extends Image2DImporter {
         val r = (color >> 16) & 255
         val g = (color >> 8) & 255
         val b = color & 255
-        
         image.setPixel(y, x, PixelRGB(r, g, b))
       }
     }

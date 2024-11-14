@@ -20,8 +20,16 @@ class ConsoleController(var args: Array[String]) extends Controller {
     val converter = consoleView.getConverter
 
     val basicConverter: RGBToGreyscaleConverter = new InternalRGBToGreyscaleConvertor
+
+    // apply some filters and x
+
     val image = basicConverter.convert(importer.importImage())
-    
+
+    val asciiImage = converter.convert(image)
+
+
+    exporter.exportData(asciiImage)
+
     // val output = converter.conve
 
     /*
