@@ -1,6 +1,6 @@
 package converter.greyscale
 
 import converter.ImageConverter
-import model.image.Image
+import model.pixel.PixelGS
 
-trait GreyscaleConverter[T] extends ImageConverter[Int, T] {}
+trait GreyscaleConverter[T] extends ImageConverter[PixelGS, T] {}

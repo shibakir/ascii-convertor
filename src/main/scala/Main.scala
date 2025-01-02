@@ -1,10 +1,10 @@
-import console.controller.ConsoleController
+import ui.console.Console
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-
-    val app = new ConsoleController(args)
-    app.run()
+    println("\n---------")
+    Console.processCommand(args.mkString(" "))
+    println("\n---------")
   }
 }

@@ -1,3 +1,8 @@
 package importer
 
-trait Importer [T] {}
+import model.image.Image
+
+trait Importer [T] {
+
+  def importItem(): T
+}

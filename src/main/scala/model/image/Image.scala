@@ -6,5 +6,4 @@ trait Image[T] {
   def getWidth: Int
 
   def getPixel(x: Int, y: Int): T
-  def setPixel(x: Int, y: Int, pixel: T): Unit
 }

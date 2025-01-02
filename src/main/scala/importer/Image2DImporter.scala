@@ -1,5 +1,5 @@
 package importer
 
-import model.pixel.PixelRGB
+import model.pixel.Pixel
 
-trait Image2DImporter extends ImageImporter[PixelRGB] {}
+trait Image2DImporter[T] extends ImageImporter[T] {}
